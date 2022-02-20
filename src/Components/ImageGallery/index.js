@@ -6,7 +6,12 @@ class ImageGallery extends React.Component {
     return (
       <StyledImageGallery>
         {this.props.images.map((elem) => (
-          <ImageGalleryItem src={elem.previewURL} alt={elem.id} key={elem.id}/>
+          <ImageGalleryItem
+            src={elem.previewURL}
+            alt={elem.id}
+            key={elem.id}
+            largeImageURL={elem.largeImageURL}
+          />
         ))}
       </StyledImageGallery>
     );

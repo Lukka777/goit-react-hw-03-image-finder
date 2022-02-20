@@ -17,6 +17,3 @@ export const ModalContent = styled.div`
   width: 80%;
 `;
 
-export const ModalCloseButton = styled.button`
-  display: none;
-`;

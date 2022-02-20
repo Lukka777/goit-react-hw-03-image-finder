@@ -15,7 +15,9 @@ class App extends React.Component {
           onClick={this.onSearchClick}
         />
         <ImageGallery images={this.state.images} />
-        <Button onClick={this.onLoadClick}/>
+        {this.state.images.length !== 0 && (
+          <Button onClick={this.onLoadClick} title="Load more" />
+        )}
       </>
     );
   }
@@ -26,13 +28,11 @@ class App extends React.Component {
     event.preventDefault();
     const images = await fetchImage(this.state.filterValue, this.state.page);
     this.setState({ ...this.state, images: images });
-    console.log(images)
+    console.log(images);
   };
   onLoadClick = async () => {
-    this.state.data.length === 0 ? "No photos found":
-    await fetchImage(this.state.pages+1 );
-    const newImages = []
-    this.setState({images:[...this.state.images, ...newImages]})
+    const newImages = await fetchImage(this.state.pages + 1);
+    this.setState({ images: [...this.state.images, ...newImages] });
   };
 }
 export default App;
